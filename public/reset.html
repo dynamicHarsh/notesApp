@@ -1,0 +1,52 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Reset Password</title>
+   
+    <script src="https://unpkg.com/boxicons@2.1.4/dist/boxicons.js"></script>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="box">
+        <div class="container">
+            <div class="top-header">
+                
+                <header>Reset Password</header>
+            </div>
+           
+            <div class="input-field">
+                <input type="password" class="input" placeholder="New Password" required>
+                <box-icon name='lock-alt' ></box-icon>
+            </div>
+            <div class="input-field">
+                <input type="password" class="input" placeholder="Confirm Password" required>
+                <box-icon name='lock-alt' ></box-icon>
+            </div>
+            <div class="input-field">
+                <input type="submit" class="submit" value="Change Password">
+            </div>
+            
+        </div>
+    </div>
+
+
+    <!-- javascript for submitting login form -->
+    <script src="https://cdn.jsdelivr.net/npm/axios@1.1.2/dist/axios.min.js"></script>
+    <script>
+        let btn=document.querySelector('.submit');
+        
+        btn.addEventListener('click',async function(e){
+            e.preventDefault();
+
+            
+            let password=document.querySelector("input[placeholder='Password']").value;
+            let confirmPassword=document.querySelector("input[placeholder='Confirm Password']").value;
+            let resp=await axios.post('/user/resetPassword',{password});
+            console.log('resp',resp);
+
+        })
+    </script>
+</body>
+</html>
